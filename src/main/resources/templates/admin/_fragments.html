@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head(title)">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title th:replace="${title}">博客详情</title>
+    <link href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../static/css/typo.css" th:href="@{/css/typo.css}">
+    <link rel="stylesheet" href="../static/css/animate.css" th:href="@{/css/animate.css}">
+    <link rel="stylesheet" href="../static/lib/prism/prism.css" th:href="@{/lib/prism/prism.css}">
+    <link rel="stylesheet" href="../static/lib/tocbot/tocbot.css" th:href="@{/lib/tocbot/tocbot.css}">
+    <link rel="stylesheet" href="../static/lib/editormd/css/editormd.min.css" th:href="@{/lib/editormd/css/editormd.min.css}">
+    <link href="../static/css/me.css" rel="stylesheet" th:href="@{/css/me.css}">
+</head>
+<body>
+
+//导航
+<nav  th:fragment="menu(n)" class="ui inverted attached segment m-padded-tb-min m-shadow-small">
+    <div class="ui container">
+        <div class="ui  inverted  secondary stackable menu">
+            <!--   图标-->
+            <h2 class="ui teal header item">管理后台</h2>
+            <a href="#"  th:href="@{/admin/blogs}" class=" m-item item m-mobile-hide" th:classappend="${n==1}? 'active'"><i class="home icon"></i>博客</a>
+            <a href="#" th:href="@{/admin/types}" class=" m-item item m-mobile-hide" th:classappend="${n==2}? 'active'"><i class="idea icon"></i>分类</a>
+            <a href="#" th:href="@{/admin/tags}" class=" m-item item m-mobile-hide" th:classappend="${n==3}? 'active'"><i class="tags icon"></i>标签</a>
+            <div class="right menu m-item m-mobile-hide">
+                <div class="ui dropdown item">
+                    <div class="test">
+                        <img src="../../static/images/head.png" alt="" class="ui avatar image" th:src="@{${session.user.avatar}}">
+                       <span th:text="${session.user.nickname}"></span>
+                    </div>
+                    <i class="dropdown icon"></i>
+                    <div class="menu">
+                        <a href="#" th:href="@{/admin/logout}" class="item ">注销</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <a href="#" class="ui button toggle  black icon m-right-top m-mobile-show">
+        <i class="sidebar icon"></i>
+    </a>
+</nav>
+
+
+
+<!--底部-->
+<footer th:fragment="footer" class="ui inverted segment  vertical m-padded-tb-massive" >
+    <div class="ui center aligned container">
+        <div class="ui grid divided  stackable inverted ">
+            <div class="three wide column">
+                <div class="ui inverted link list">
+                    <div class="item">
+                        <img th:src="@{/images/weixin.png}" class="ui round image" alt="二维码" style="width: 120px">
+                    </div>
+                </div>
+            </div>
+
+            <div class="three wide column">
+                <h4 class="ui inverted header"> 最新博客</h4>
+                <div class="ui inverted link list">
+                    <a href="#" class="item">用户故事</a>
+                    <a href="#" class="item">用户故事</a>
+                    <a href="#" class="item">用户故事</a>
+                </div>
+            </div>
+            <div class="three wide column">
+                <h4 class="ui inverted header"> 联系作者</h4>
+                <div class="ui inverted link list">
+                    <a href="#" class="item">Email:852555027@qq.com</a>
+                    <a href="#" class="item">QQ:852555025</a>
+
+                </div>
+            </div>
+            <div class="seven wide column">
+                <h4 class="ui inverted header ">申明</h4>
+                <p class="m-opacity-mini">这是我的个人博客.................................</p>
+            </div>
+        </div>
+
+
+        <div class="ui inverted section divider">
+        </div>
+        <p class="m-opacity-tiny">Copyright © 2013-2020 Tcy 852555027 All Rights Reserved</p>
+    </div>
+</footer>
+
+
+</body>
+</html>
