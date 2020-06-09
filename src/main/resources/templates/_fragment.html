@@ -10,6 +10,14 @@
     <link rel="stylesheet" href="../static/lib/prism/prism.css" th:href="@{/lib/prism/prism.css}">
     <link rel="stylesheet" href="../static/lib/tocbot/tocbot.css" th:href="@{/lib/tocbot/tocbot.css}">
     <link href="../static/css/me.css" rel="stylesheet" th:href="@{/css/me.css}">
+    <script th:src="@{/js/jquery.ripples.js}"></script>
+    <script th:src="@{/js/jquery.min.js}" ></script>
+    <script>
+        $(".full-landing-image").ripples({
+            resolution:200,
+            perturbance:0.04,
+        });
+    </script>
 </head>
 <body>
 //导航
@@ -52,10 +60,11 @@
 
             <div class="three wide column">
                 <h4 class="ui inverted header"> 最新博客</h4>
-                <div class="ui inverted link list">
-                    <a href="#" class="item">用户故事</a>
-                    <a href="#" class="item">用户故事</a>
-                    <a href="#" class="item">用户故事</a>
+                <div id="newblog-container">
+                    <div class="ui inverted link list" th:fragment="newblogList">
+                        <a href="#" th:href="@{/blog/{id}(id=${blog.id})}" target="_blank" class="item m-text-thin" th:each="blog : ${newblogs}" th:text="${blog.title}">用户故事（User Story）</a>
+
+                    </div>
                 </div>
             </div>
             <div class="three wide column">
@@ -88,6 +97,9 @@
     <script src="../static/lib/tocbot/tocbot.min.js"  th:src="@{/lib/tocbot/tocbot.min.js}" ></script>
     <script src="../static/lib/prism/prism.js" th:src="@{/lib/prism/prism.js}"></script>
     <script src="../static/lib/qrcode/qrcode.min.js"  th:src="@{/lib/qrcode/qrcode.min.js}"></script>
+    <script>
+        $('#newblog-container').load(/*[[@{/footer/newblog}]]*/"/footer/newblog");
+    </script>
 </th:block>
 
 
